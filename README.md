@@ -55,7 +55,7 @@ De acordo com o planejamento de implantação do projeto:
 
 <p align="center">
   <!-- INSIRA A FOTO DA EQUIPE ABAIXO -->
-  <img src="resources/images/foto_equipe.png" alt="Equipe SDAMK Studios" width="600"/><br/>
+  <img src="IMG_20260929_121014.jpg" alt="Equipe SDAMK Studios" width="600"/><br/>
   <sub><b>SDAMK Studios:</b> Saulo, Davi, Andresson, Matheus, Kalleo e Caio</sub>
 </p>
 
@@ -73,7 +73,7 @@ De acordo com o planejamento de implantação do projeto:
 ## 📸 Capturas de Tela e Mídias
 
 * **Logo do Jogo:** Guardada no caminho `resources/images/logo_pokeif.png`
-* **Foto da Equipe:** Guardada no caminho `resources/images/foto_equipe.png`
+* **Foto da Equipe:** Guardada no caminho `resources/images/IMG_20260929_121014.jpg`
 
 ---
 
