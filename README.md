@@ -2,7 +2,7 @@
 
 <p align="center">
   <!-- INSIRA A LOGO DO JOGO ABAIXO -->
-  <img src="resources/images/logo_pokeif.png" alt="Logo do pokeIF" width="320"/>
+  <img src="resources/images/logo_SDAMK _STUDIOS.png" alt="Logo do pokeIF" width="320"/>
 </p>
 
 <p align="center">
