@@ -1,7 +1,3 @@
----
-
-### 2. 📄 Arquivo `PokeIf/docs/README.md`
-
 ```markdown
 # 📑 Documentação Técnica ( docs/ )
 
