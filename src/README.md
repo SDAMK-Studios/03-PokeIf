@@ -1,8 +1,3 @@
----
-
-### 2. 📄 Arquivo `PokeIf/src/README.md`
-
-```markdown
 # 💻 Código-Fonte ( src/ )
 
 ## 📌 Introdução
