@@ -1,4 +1,4 @@
-# 🎮 pokeIF
+# 🎮 PokeIF
 
 <p align="center">
   <!-- INSIRA A LOGO DO JOGO ABAIXO -->
