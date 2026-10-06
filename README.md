@@ -51,25 +51,6 @@ De acordo com o planejamento de implantação do projeto:
 
 ---
 
-## 👥 Integrantes da Equipe & Divisão de Papéis
-
-<p align="center">
-  <!-- INSIRA A FOTO DA EQUIPE ABAIXO -->
-  <img src="resources/images/IMG_20260929_121014.jpg" alt="Equipe SDAMK Studios" width="600"/><br/>
-  <sub><b>SDAMK Studios:</b> Saulo, Davi, Andresson, Matheus, Kalleo e Caio</sub>
-</p>
-
-| Integrante | Papéis e Responsabilidades no Projeto |
-| :--- | :--- |
-| **Davi** | Desenvolvedor Java, Banco de Dados, GitHub, UX |
-| **Kalleo** | Desenvolvedor Java, Banco de Dados, UX |
-| **Saulo** | Desenvolvedor Java, UX, UI |
-| **Matheus** | GitHub, UI, Relatório |
-| **Andresson** | UI, Testes |
-| **Caio** | UI |
-
----
-
 ## 📸 Capturas de Tela e Mídias
 
 * **Logo do Jogo:** Guardada no caminho `resources/images/logo_pokeif.png`
