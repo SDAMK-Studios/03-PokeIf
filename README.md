@@ -54,7 +54,6 @@ De acordo com o planejamento de implantação do projeto:
 ## 📸 Capturas de Tela e Mídias
 
 * **Logo do Jogo:** Guardada no caminho `resources/images/logo_pokeif.png`
-* **Foto da Equipe:** Guardada no caminho `resources/images/IMG_20260929_121014.jpg`
 
 ---
 
