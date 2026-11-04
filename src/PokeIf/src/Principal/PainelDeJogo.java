@@ -7,13 +7,15 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
+import Entity.Player;
+
 public class PainelDeJogo extends JPanel implements Runnable{ //implementando o Runnable para rodar o Thread
 	
 	// CONFIGURAÇÃO DA TELA
 	final int originalTitleSize = 16; // 16x16 formato "original" dos blocos de mapa e dos NPCs do jogo
 	final int scale = 3; // escala
 	
-	final int titleSize = originalTitleSize * scale; // 48x48 formato "real" dos blocos de mapa e dos NPCs do jogo
+	public final int titleSize = originalTitleSize * scale; // 48x48 formato "real" dos blocos de mapa e dos NPCs do jogo deixei público para conseguir usar ele na outra classe
 	final int maxScreenCol = 16; //Coluna Máxima da tela final(blocos na horizontal)
 	final int maxScreenRow = 12; //Linha Máxima da tela final (blocos na vertical) - ficando em uma proporção 16/12 -> 4/
 	final int screenWidth = titleSize * maxScreenCol; //A largura da tela terá o tamanho do bloco vezes as colunas da tela máxima ou seja 768 pixels
@@ -25,6 +27,7 @@ public class PainelDeJogo extends JPanel implements Runnable{ //implementando o 
 	
 	KeyHandler KeyH = new KeyHandler();
 	Thread gameThread; //Ele mantem o seu programa aberto até eu fechar, muito útil para jogos 2d para rodar os 
+	Player player = new Player(this, KeyH); //instanciando a classe que criamos
 	
 	//Definindo posição padrão do jogador
 	int playerX = 100;
@@ -88,19 +91,8 @@ public class PainelDeJogo extends JPanel implements Runnable{ //implementando o 
 	
 	public void update() { 
 		
-		if(KeyH.upPressed == true) {
-			playerY -= playerSpeed; //para a posição ser alterada e causar a impressão que o player tá se movendo
-		}
-		else if(KeyH.downPressed == true) {
-			playerY += playerSpeed;
-		}
-		else if(KeyH.leftPressed == true) {
-			playerX -= playerSpeed;
-		}
-		
-		else if(KeyH.rightPressed == true) {
-			playerX += playerSpeed;
-		}
+		player.update(); //Chamando a função da classe player
+	
 	}
 	
 	public void paintComponent(Graphics g) { //Método padrão para desenhar coisas no JPanel
@@ -109,10 +101,8 @@ public class PainelDeJogo extends JPanel implements Runnable{ //implementando o 
 		
 		Graphics2D g2 = (Graphics2D)g; //Mudamos o Graphics para o Graphics2D(tem as funções que o outro)
 		
-		g2.setColor(Color.white); //definindo a cor como branca
+		player.draw(g2);
 		
-		g2.fillRect(playerX, playerY, titleSize, titleSize); //criando um retangulo com x = 100, y = 100, largura e tamanho 48x48 
-	
 		g2.dispose(); //"descarta" o g2 Graphics2D, bom para economizar memória
 	}
 }
