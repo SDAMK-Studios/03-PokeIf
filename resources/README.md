@@ -18,3 +18,5 @@ resources/
 ├── icons/         # Ícones utilizados nos botões, campos e menus
 └── images/        # Imagens de fundo, logos e ilustrações
 └── sprites/       # sprites do jogo
+    └── sprites-personagem/      # sprites dos personagens do jogo.
+    └── sprites-mapa/            # sprites do mapa.
