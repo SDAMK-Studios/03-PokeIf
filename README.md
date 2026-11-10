@@ -1,19 +1,5 @@
 # 🎮 PokeIF
 
-<p align="center">
-  <!-- INSIRA A LOGO DO JOGO ABAIXO -->
-  <img src="resources/images/logo_SDAMK _STUDIOS.png" alt="Logo do pokeIF" width="320"/>
-</p>
-
-<p align="center">
-  <b>Projeto Livre da disciplina de Programação Orientada a Objetos (POO)</b><br/>
-  <i>Desenvolvido por: SDAMK Studios — IFCE Campus Maranguape</i>
-</p>
-
----
-
-## 📝 Descrição
-
 O **pokeIF** é um jogo retrô em perspectiva 2D que combina nostalgia com a rotina e o cotidiano dos estudantes do **IFCE Campus Maranguape**.
 
 A narrativa acompanha um estudante (o protagonista) que chega ao campus para assistir às suas aulas, mas é barrado na entrada por estar **sem o devido fardamento escolar**. Para conquistar o direito de entrar na escola, o jogador precisa encarar uma jornada dividida em **4 fases**, duelando contra 4 personagens diferentes — culminando em um confronto contra o grande **chefão final**.
@@ -63,14 +49,11 @@ A organização do repositório segue uma estrutura padronizada para separar có
 
 ```text
 PokeIf/
-├── .gitignore             # Arquivos e pastas ignorados pelo Git
-├── LICENSE                # Licença de uso do projeto (MIT License)
-├── README.md              # Documentação principal do repositório
-│
 ├── database/              # Modelagem e scripts de Banco de Dados
 │   ├── DER/               # Diagrama Entidade-Relacionamento (Modelo Conceitual)
 │   ├── DL/                # Diagrama Lógico (Modelo Lógico)
 │   └── scripts/           # Scripts SQL (Criação de tabelas e inserção de dados)
+│   └── README.md           # Documentação principal do repositório
 │
 ├── docs/                  # Documentação técnica e visual do sistema
 │   ├── diagrams/          # Diagramas explicativos do fluxo do jogo
@@ -79,16 +62,23 @@ PokeIf/
 │   │   ├── mockups/       # Designs de alta fidelidade das telas
 │   │   ├── prototypes/    # Protótipos interativos
 │   │   └── wireframes/    # Esboços e estruturas de tela
-│   └── uml/               # Diagramas UML (Classes, Casos de Uso, Sequência, etc.)
+│   ├── uml/               # Diagramas UML (Classes, Casos de Uso, Sequência, etc.)
+│   └── README.md          # Documentação principal do repositório
 │
 ├── resources/             # Recursos estáticos e visuais da interface
 │   ├── icons/             # Ícones utilizados na UI
-│   └── images/            # Imagens, logos e fotos da equipe
+│   ├── images/            # Imagens, logos e fotos da equipe
+│   ├── sprites/
+│   └── README.md          # Documentação principal do repositório
 │
 ├── src/                   # Código-fonte da aplicação em Java / JavaFX
+│   ├── PokeIf/
 │
-└── support/               # Materiais complementares e de apoio
-    ├── documents/         # Documentos de apoio e especificações
-    ├── references/        # Referências bibliográficas e links úteis
-    ├── tutorials/         # Guias e tutoriais de utilização e execução
-    └── videos/            # Recursos audiovisuais usados no desenvolvimento
+├── support/               # Materiais complementares e de apoio
+│   ├── documents/         # Documentos de apoio e especificações
+│   ├── references/        # Referências bibliográficas e links úteis
+│   ├── tutorials/         # Guias e tutoriais de utilização e execução
+│   └── videos/            # Recursos audiovisuais usados no desenvolvimento
+├── .gitignore             # Arquivos e pastas ignorados pelo Git
+├── LICENSE                # Licença de uso do projeto (MIT License)
+├── README.md              # Documentação principal do repositório
