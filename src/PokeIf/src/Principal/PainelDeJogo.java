@@ -8,6 +8,7 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 import Entity.Player;
+import tile.TileManager;
 
 public class PainelDeJogo extends JPanel implements Runnable{ //implementando o Runnable para rodar o Thread
 	
@@ -25,14 +26,11 @@ public class PainelDeJogo extends JPanel implements Runnable{ //implementando o 
 	//FPS
 	int FPS = 60; //definindo o FPS como 60
 	
+	TileManager tileM = new TileManager(this); //instanciando o TileManager para o painel de jogo
 	KeyHandler KeyH = new KeyHandler();
 	Thread gameThread; //Ele mantem o seu programa aberto até eu fechar, muito útil para jogos 2d para rodar os 
 	Player player = new Player(this, KeyH); //instanciando a classe que criamos
 	
-	//Definindo posição padrão do jogador
-	int playerX = 100;
-	int playerY = 100;
-	int playerSpeed = 4;
 	
 	public PainelDeJogo() {
 		
