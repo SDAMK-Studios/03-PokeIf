@@ -13,14 +13,14 @@ import tile.TileManager;
 public class PainelDeJogo extends JPanel implements Runnable{ //implementando o Runnable para rodar o Thread
 	
 	// CONFIGURAÇÃO DA TELA
-	final int originalTitleSize = 16; // 16x16 formato "original" dos blocos de mapa e dos NPCs do jogo
+	final int originalTileSize = 16; // 16x16 formato "original" dos blocos de mapa e dos NPCs do jogo
 	final int scale = 3; // escala
 	
-	public final int titleSize = originalTitleSize * scale; // 48x48 formato "real" dos blocos de mapa e dos NPCs do jogo deixei público para conseguir usar ele na outra classe
-	final int maxScreenCol = 16; //Coluna Máxima da tela final(blocos na horizontal)
-	final int maxScreenRow = 12; //Linha Máxima da tela final (blocos na vertical) - ficando em uma proporção 16/12 -> 4/
-	final int screenWidth = titleSize * maxScreenCol; //A largura da tela terá o tamanho do bloco vezes as colunas da tela máxima ou seja 768 pixels
-	final int screenHeight = titleSize * maxScreenRow; //O tamanho da tela terá o tamanhi do bloco vezes as linhas da tela máxima ou seja 576 pixel
+	public final int tileSize = originalTileSize * scale; // 48x48 formato "real" dos blocos de mapa e dos NPCs do jogo deixei público para conseguir usar ele na outra classe
+	public final int maxScreenCol = 16; //Coluna Máxima da tela final(blocos na horizontal)
+	public final int maxScreenRow = 12; //Linha Máxima da tela final (blocos na vertical) - ficando em uma proporção 16/12 -> 4/
+	public final int screenWidth = tileSize * maxScreenCol; //A largura da tela terá o tamanho do bloco vezes as colunas da tela máxima ou seja 768 pixels
+	public final int screenHeight = tileSize * maxScreenRow; //O tamanho da tela terá o tamanhi do bloco vezes as linhas da tela máxima ou seja 576 pixel
 	// ou seja a tela terá o tamanho 768 x 576 por enquanto
 	
 	//FPS
@@ -98,6 +98,8 @@ public class PainelDeJogo extends JPanel implements Runnable{ //implementando o 
 		super.paintComponent(g); //Esse super significa a classe "pai", ou seja o JPanel, sendo o painel de jogo uma subclasse de JPanel
 		
 		Graphics2D g2 = (Graphics2D)g; //Mudamos o Graphics para o Graphics2D(tem as funções que o outro)
+		
+		tileM.draw(g2); // como uma primeira camada, é desenhada os tiles primeiro, só depois o jogador, caso  contrario o jogador ficaria "dentro dos tiles", os ties sobrescreveriam o jogador
 		
 		player.draw(g2);
 		

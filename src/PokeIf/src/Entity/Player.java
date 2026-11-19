@@ -127,6 +127,6 @@ public class Player extends Entity {
 			}
 			break;
 		}
-		g2.drawImage(image, x, y, pj.titleSize, pj.titleSize, null); //definindo imagem, posição e tamanho
+		g2.drawImage(image, x, y, pj.tileSize, pj.tileSize, null); //definindo imagem, posição e tamanho
 	}
 }
