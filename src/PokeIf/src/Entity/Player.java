@@ -15,10 +15,16 @@ public class Player extends Entity {
 	PainelDeJogo pj;
 	KeyHandler KeyH;
 	
+	public final int screenX; //screenx e y mostra a posição que será desenhada o jogador na tela
+	public final int screenY;
+	
 	public Player(PainelDeJogo pj, KeyHandler KeyH) {
 		
 		this.pj = pj;
 		this.KeyH = KeyH;
+		
+		screenX = pj.screenWidth/2 - (pj.tileSize/2); // faz o jogador nascer exatamente no centro da tela
+		screenY = pj.screenHeight/2 - (pj.tileSize/2);
 		
 		setDefaultValues();
 		getPlayerImage();
@@ -26,8 +32,8 @@ public class Player extends Entity {
 	}
 	public void setDefaultValues() { //Vamos transferir as coisas que fazemos no painel de jogo para essa nova classe, por motivos de organização
 		
-		x = 100;
-		y = 100;
+		worldX = pj.tileSize * 24; //posição do jogador no mapa, 24 é a linha que eu quero spawnar no jogo
+		worldY = pj.tileSize * 21;
 		speed = 4;
 		direction = "down"; //definindo a direção como baixo(qualquer uma daria certo)
 	}
@@ -57,20 +63,20 @@ public class Player extends Entity {
 			
 			if(KeyH.upPressed == true) {
 				direction = "up"; //se pressionar para cima(w), a direção é pra cima
-				y -= speed; //para a posição ser alterada e causar a impressão que o player tá se movendo
+				worldY -= speed; //para a posição ser alterada e causar a impressão que o player tá se movendo
 			}
 			else if(KeyH.downPressed == true) {
 				direction = "down";
-				y += speed;
+				worldY += speed;
 			}
 			else if(KeyH.leftPressed == true) {
 				direction = "left";
-				x -= speed;
+				worldX -= speed;
 			}
 			
 			else if(KeyH.rightPressed == true) {
 				direction = "right";
-				x += speed;
+				worldX += speed;
 			}
 			spriteCounter++; //isso varia os sprites depois do contador chegar até 12(um valor padrão, para o nosso FPS) e depois alterna o num do sprite, que lá no draw vai desenhar a imagem de acordo com a digitação das nossas teclas
 			if(spriteCounter > 12) {
@@ -127,6 +133,6 @@ public class Player extends Entity {
 			}
 			break;
 		}
-		g2.drawImage(image, x, y, pj.tileSize, pj.tileSize, null); //definindo imagem, posição e tamanho
+		g2.drawImage(image, screenX, screenY, pj.tileSize, pj.tileSize, null); //definindo imagem, posição e tamanho
 	}
 }

@@ -40,6 +40,15 @@ public class TileManager {
 			tile[2] = new Tile(); // instanciando esse array de tiles
 			tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/água.png"));
 			
+			tile[3] = new Tile(); // instanciando esse array de tiles
+			tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/parede.png"));
+			
+			tile[4] = new Tile(); // instanciando esse array de tiles
+			tile[4].image = ImageIO.read(getClass().getResourceAsStream("/tiles/arvore.png"));
+			
+			tile[5] = new Tile(); // instanciando esse array de tiles
+			tile[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/areia.png"));
+			
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
