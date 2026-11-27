@@ -22,9 +22,9 @@ public class TileManager {
 		
 		tile = new Tile[10]; //coloquei por enquanto que vamos criar 10 tipos de blocos, entãoo coloquei um array com o tamanho de 10
 		
-		mapTileNum = new int[pj.maxScreenCol][pj.maxScreenRow]; //vão receber o arquivo txt com o mapa 
+		mapTileNum = new int[pj.maxWorldCol][pj.maxWorldRow]; //vão receber o arquivo txt com o mapa 
 		getTileImage();
-		loadMap("/maps/map01.txt");
+		loadMap("/maps/ifce.txt");
 	}
 	
 	public void getTileImage() {
@@ -34,19 +34,19 @@ public class TileManager {
 			tile[0] = new Tile(); // instanciando esse array de tiles e adicionando cada bloco em seu respectivo array
 			tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grama.png"));
 			
-			tile[1] = new Tile(); // instanciando esse array de tiles
+			tile[1] = new Tile(); 
 			tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/pedra.png"));
 			
-			tile[2] = new Tile(); // instanciando esse array de tiles
+			tile[2] = new Tile(); 
 			tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/água.png"));
 			
-			tile[3] = new Tile(); // instanciando esse array de tiles
+			tile[3] = new Tile(); 
 			tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/parede.png"));
 			
-			tile[4] = new Tile(); // instanciando esse array de tiles
+			tile[4] = new Tile(); 
 			tile[4].image = ImageIO.read(getClass().getResourceAsStream("/tiles/arvore.png"));
 			
-			tile[5] = new Tile(); // instanciando esse array de tiles
+			tile[5] = new Tile(); 
 			tile[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/areia.png"));
 			
 		}catch(IOException e) {
@@ -62,7 +62,7 @@ public class TileManager {
 			int col = 0;
 			int row = 0;
 			
-			while(col < pj.maxScreenCol && row < pj.maxScreenRow) {
+			while(col < pj.maxWorldCol && row < pj.maxWorldRow) {
 				
 				String line = br.readLine(); // lê uma única linha
 				
@@ -87,24 +87,25 @@ public class TileManager {
 	}
 	public void draw(Graphics2D g2) { // método para desenhar os tiles
 		
-		int col = 0; //coluna
-		int row = 0; //linha
-		int x = 0;
-		int y = 0;
+		int WorldCol = 0; //coluna
+		int WorldRow = 0; //linha
 		
-		while (col < pj.maxScreenCol && row < pj.maxScreenRow) {
+		while (WorldCol < pj.maxWorldCol && WorldRow < pj.maxWorldRow) {
 			
-			int tileNum = mapTileNum[col][row];
+			int tileNum = mapTileNum[WorldCol][WorldRow];
 			
-			g2.drawImage(tile[tileNum].image, x, y, pj.tileSize, pj.tileSize, null); //desenhe a grama, aumente de 1 em 1 as colunas, e some a cordenada x com o tamanho do tile(48)
-			col++;
-			x += pj.tileSize;
+			int worldX = WorldCol * pj.tileSize; //O world é a posição no mapa
+			int worldY = WorldRow * pj.tileSize;
+			int screenX = worldX - pj.player.worldX + pj.player.screenX; //O screen é onde vamos desenhar na tela
+			int screenY = worldY - pj.player.worldY + pj.player.screenY;
 			
-			if(col == pj.maxScreenCol) { // se a coluna atingir o tamanho máximo da coluna da tela(16), reseta o col e o x, tembem aumentando row e o y
-				col = 0;
-				x = 0;
-				row ++;
-				y += pj.tileSize;
+			g2.drawImage(tile[tileNum].image, screenX, screenY, pj.tileSize, pj.tileSize, null); //desenhe a grama, aumente de 1 em 1 as colunas, e some a cordenada x com o tamanho do tile(48)
+			WorldCol++;
+	
+			
+			if(WorldCol == pj.maxWorldCol) { // se a coluna atingir o tamanho máximo da coluna da tela(16), reseta o col e o x, tembem aumentando row e o y
+				WorldCol = 0;
+				WorldRow ++;
 			}
 		}
 	}

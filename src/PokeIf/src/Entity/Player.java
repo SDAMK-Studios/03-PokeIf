@@ -32,7 +32,7 @@ public class Player extends Entity {
 	}
 	public void setDefaultValues() { //Vamos transferir as coisas que fazemos no painel de jogo para essa nova classe, por motivos de organização
 		
-		worldX = pj.tileSize * 24; //posição do jogador no mapa, 24 é a linha que eu quero spawnar no jogo
+		worldX = pj.tileSize * 23; //posição do jogador no mapa, 24 é a linha que eu quero spawnar no jogo
 		worldY = pj.tileSize * 21;
 		speed = 4;
 		direction = "down"; //definindo a direção como baixo(qualquer uma daria certo)
