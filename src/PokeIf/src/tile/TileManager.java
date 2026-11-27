@@ -24,7 +24,7 @@ public class TileManager {
 		
 		mapTileNum = new int[pj.maxWorldCol][pj.maxWorldRow]; //vão receber o arquivo txt com o mapa 
 		getTileImage();
-		loadMap("/maps/ifce.txt");
+		loadMap("/maps/map01.txt");
 	}
 	
 	public void getTileImage() {
@@ -34,19 +34,19 @@ public class TileManager {
 			tile[0] = new Tile(); // instanciando esse array de tiles e adicionando cada bloco em seu respectivo array
 			tile[0].image = ImageIO.read(getClass().getResourceAsStream("/tiles/grama.png"));
 			
-			tile[1] = new Tile(); 
+			tile[1] = new Tile(); // instanciando esse array de tiles
 			tile[1].image = ImageIO.read(getClass().getResourceAsStream("/tiles/pedra.png"));
 			
-			tile[2] = new Tile(); 
+			tile[2] = new Tile(); // instanciando esse array de tiles
 			tile[2].image = ImageIO.read(getClass().getResourceAsStream("/tiles/água.png"));
 			
-			tile[3] = new Tile(); 
+			tile[3] = new Tile(); // instanciando esse array de tiles
 			tile[3].image = ImageIO.read(getClass().getResourceAsStream("/tiles/parede.png"));
 			
-			tile[4] = new Tile(); 
+			tile[4] = new Tile(); // instanciando esse array de tiles
 			tile[4].image = ImageIO.read(getClass().getResourceAsStream("/tiles/arvore.png"));
 			
-			tile[5] = new Tile(); 
+			tile[5] = new Tile(); // instanciando esse array de tiles
 			tile[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/areia.png"));
 			
 		}catch(IOException e) {
@@ -62,7 +62,7 @@ public class TileManager {
 			int col = 0;
 			int row = 0;
 			
-			while(col < pj.maxWorldCol && row < pj.maxWorldRow) {
+			while(col < pj.maxScreenCol && row < pj.maxScreenRow) {
 				
 				String line = br.readLine(); // lê uma única linha
 				
@@ -85,28 +85,44 @@ public class TileManager {
 			
 		}
 	}
-	public void draw(Graphics2D g2) { // método para desenhar os tiles
-		
-		int WorldCol = 0; //coluna
-		int WorldRow = 0; //linha
-		
-		while (WorldCol < pj.maxWorldCol && WorldRow < pj.maxWorldRow) {
-			
-			int tileNum = mapTileNum[WorldCol][WorldRow];
-			
-			int worldX = WorldCol * pj.tileSize; //O world é a posição no mapa
-			int worldY = WorldRow * pj.tileSize;
-			int screenX = worldX - pj.player.worldX + pj.player.screenX; //O screen é onde vamos desenhar na tela
-			int screenY = worldY - pj.player.worldY + pj.player.screenY;
-			
-			g2.drawImage(tile[tileNum].image, screenX, screenY, pj.tileSize, pj.tileSize, null); //desenhe a grama, aumente de 1 em 1 as colunas, e some a cordenada x com o tamanho do tile(48)
-			WorldCol++;
-	
-			
-			if(WorldCol == pj.maxWorldCol) { // se a coluna atingir o tamanho máximo da coluna da tela(16), reseta o col e o x, tembem aumentando row e o y
-				WorldCol = 0;
-				WorldRow ++;
-			}
-		}
+	public void draw(Graphics2D g2) {
+	    
+	    // Começa a varrer a matriz do mapa a partir da coluna 0 e linha 0
+	    int worldCol = 0;
+	    int worldRow = 0;
+	    
+	    // Percorre toda a grelha do mundo (50x50) definida no ifce.txt
+	    while(worldCol < pj.maxWorldCol && worldRow < pj.maxWorldRow) {
+	        
+	        // Descobre qual o número do bloco (ex: 0=grama, 1=pedra, 4=árvore) nesta posição
+	        int tileNum = mapTileNum[worldCol][worldRow];
+	        
+	        // Converte a posição da grelha em pixels reais do mundo
+	        int worldX = worldCol * pj.tileSize;
+	        int worldY = worldRow * pj.tileSize;
+	        
+	        // Calcula a posição onde o bloco deve aparecer na tela em relação ao jogador (Câmara)
+	        int screenX = worldX - pj.player.worldX + pj.player.screenX;
+	        int screenY = worldY - pj.player.worldY + pj.player.screenY;
+	        
+	        // Otimização: Desenha apenas os blocos que estão dentro da área visível do monitor (com margem de 1 tile)
+	        if (worldX + pj.tileSize > pj.player.worldX - pj.player.screenX &&
+	            worldX - pj.tileSize < pj.player.worldX + pj.player.screenX &&
+	            worldY + pj.tileSize > pj.player.worldY - pj.player.screenY &&
+	            worldY - pj.tileSize < pj.player.worldY + pj.player.screenY) {
+	            
+	            // Desenha a imagem do bloco correspondente na tela
+	            g2.drawImage(tile[tileNum].image, screenX, screenY, pj.tileSize, pj.tileSize, null);
+	        }
+	        
+	        // Avança para a próxima coluna
+	        worldCol++;
+	        
+	        // Quando chega ao fim da linha do mundo, salta para a linha seguinte (quebra de linha do while)
+	        if(worldCol == pj.maxWorldCol) {
+	            worldCol = 0;
+	            worldRow++;
+	        }
+	    }
 	}
 }
