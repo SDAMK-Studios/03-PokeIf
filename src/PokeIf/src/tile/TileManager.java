@@ -28,7 +28,6 @@ public class TileManager {
 	}
 	
 	public void getTileImage() {
-		
 		try {
 			
 			tile[0] = new Tile(); // instanciando esse array de tiles e adicionando cada bloco em seu respectivo array
@@ -49,6 +48,7 @@ public class TileManager {
 			tile[5] = new Tile(); 
 			tile[5].image = ImageIO.read(getClass().getResourceAsStream("/tiles/areia.png"));
 			
+			
 		}catch(IOException e) {
 			e.printStackTrace();
 		}
@@ -66,7 +66,7 @@ public class TileManager {
 				
 				String line = br.readLine(); // lê uma única linha
 				
-				while(col < pj.maxScreenCol) {
+				while(col < pj.maxWorldCol) {
 					
 					String numbers[] = line.split(" "); // da linha que acabamos de ler vamos armazenar cada número nesse arreio, separando eles pelo espaço " "
 					
@@ -75,7 +75,7 @@ public class TileManager {
 					mapTileNum[col][row] = num;
 					col++;
 				}
-				if(col == pj.maxScreenCol) {
+				if(col == pj.maxWorldCol) {
 					col = 0;
 					row++;
 				}
@@ -99,13 +99,20 @@ public class TileManager {
 			int screenX = worldX - pj.player.worldX + pj.player.screenX; //O screen é onde vamos desenhar na tela
 			int screenY = worldY - pj.player.worldY + pj.player.screenY;
 			
-			g2.drawImage(tile[tileNum].image, screenX, screenY, pj.tileSize, pj.tileSize, null); //desenhe a grama, aumente de 1 em 1 as colunas, e some a cordenada x com o tamanho do tile(48)
-			WorldCol++;
-	
+			//Basicamente é feito para desenhar os blocos no mapa somente onde a tela passar, deixando o jogo mais leve
+			if(worldX + pj.tileSize > pj.player.worldX - pj.player.screenX &&
+			   worldX - pj.tileSize < pj.player.worldX + pj.player.screenX && 
+			   worldY + pj.tileSize > pj.player.worldY - pj.player.screenY && 
+			   worldY - pj.tileSize < pj.player.worldY + pj.player.screenY) {
+				g2.drawImage(tile[tileNum].image, screenX, screenY, pj.tileSize, pj.tileSize, null); 
+				
+			}
 			
-			if(WorldCol == pj.maxWorldCol) { // se a coluna atingir o tamanho máximo da coluna da tela(16), reseta o col e o x, tembem aumentando row e o y
+			WorldCol++;
+			
+			if(WorldCol == pj.maxWorldCol) { // Se a coluna atingir o tamanho máximo da coluna da tela(16), reseta o col e o x, tembem aumentando row e o y
 				WorldCol = 0;
-				WorldRow ++;
+				WorldRow++;
 			}
 		}
 	}
