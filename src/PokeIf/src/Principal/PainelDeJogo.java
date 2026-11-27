@@ -23,11 +23,9 @@ public class PainelDeJogo extends JPanel implements Runnable{ //implementando o 
 	public final int screenHeight = tileSize * maxScreenRow; //O tamanho da tela terá o tamanhi do bloco vezes as linhas da tela máxima ou seja 576 pixel
 	// ou seja a tela terá o tamanho 768 x 576 por enquanto
 	
-	//CONFIGURAÇÕES DO MUNDO
+	// CONFIGUAÇÃO DO MUNDO (Tamanho total do mapa lido do ifce.txt)
 	public final int maxWorldCol = 50;
 	public final int maxWorldRow = 50;
-	public final int worldWidth = tileSize * maxWorldCol;
-	public final int worldHeight = tileSize * maxWorldRow;
 	
 	//FPS
 	int FPS = 60; //definindo o FPS como 60
